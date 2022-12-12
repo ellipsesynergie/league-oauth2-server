@@ -27,7 +27,7 @@ class RefreshTokenGrantTest extends TestCase
 
     public function testCompleteFlowMissingClientId()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST['grant_type'] = 'refresh_token';
 
@@ -40,7 +40,7 @@ class RefreshTokenGrantTest extends TestCase
 
     public function testCompleteFlowMissingClientSecret()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type' => 'refresh_token',
@@ -56,7 +56,7 @@ class RefreshTokenGrantTest extends TestCase
 
     public function testCompleteFlowInvalidClient()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidClientException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidClientException');
 
         $_POST = [
             'grant_type' => 'refresh_token',
@@ -79,7 +79,7 @@ class RefreshTokenGrantTest extends TestCase
 
     public function testCompleteFlowMissingRefreshToken()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type'    => 'refresh_token',
@@ -113,7 +113,7 @@ class RefreshTokenGrantTest extends TestCase
 
     public function testCompleteFlowInvalidRefreshToken()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRefreshException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRefreshException');
 
         $_POST = [
             'grant_type'    => 'refresh_token',
@@ -288,7 +288,7 @@ class RefreshTokenGrantTest extends TestCase
 
     public function testCompleteFlowExpiredRefreshToken()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRefreshException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRefreshException');
 
         $_POST = [
             'grant_type'    => 'refresh_token',
@@ -418,7 +418,7 @@ class RefreshTokenGrantTest extends TestCase
 
         $server->addGrantType($grant);
 
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidScopeException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidScopeException');
 
         $server->issueAccessToken();
     }

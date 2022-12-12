@@ -15,7 +15,7 @@ class PasswordGrantTest extends TestCase
 {
     public function testCompleteFlowMissingClientId()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST['grant_type'] = 'password';
 
@@ -28,7 +28,7 @@ class PasswordGrantTest extends TestCase
 
     public function testCompleteFlowMissingClientSecret()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type' => 'password',
@@ -44,7 +44,7 @@ class PasswordGrantTest extends TestCase
 
     public function testCompleteFlowInvalidClient()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidClientException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidClientException');
 
         $_POST = [
             'grant_type' => 'password',
@@ -67,7 +67,7 @@ class PasswordGrantTest extends TestCase
 
     public function testNoUsername()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type' => 'password',
@@ -109,7 +109,7 @@ class PasswordGrantTest extends TestCase
 
     public function testNoPassword()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type' => 'password',
@@ -152,7 +152,7 @@ class PasswordGrantTest extends TestCase
 
     public function testNoCallable()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\ServerErrorException');
+        $this->expectException('League\OAuth2\Server\Exception\ServerErrorException');
 
         $_POST = [
             'grant_type' => 'password',
@@ -196,7 +196,7 @@ class PasswordGrantTest extends TestCase
 
     public function testCompleteFlowInvalidScope()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidScopeException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidScopeException');
 
         $_POST = [
             'grant_type' => 'password',
@@ -244,7 +244,7 @@ class PasswordGrantTest extends TestCase
 
     public function testCompleteFlowNoScopes()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type' => 'password',
@@ -293,7 +293,7 @@ class PasswordGrantTest extends TestCase
 
     public function testCompleteFlowInvalidCredentials()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidCredentialsException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidCredentialsException');
 
         $_POST = [
             'grant_type' => 'password',

@@ -54,7 +54,7 @@ class ResourceServerTest extends TestCase
 
     public function testDetermineAccessTokenMissingToken()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $sessionStorage = M::mock('League\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
@@ -111,7 +111,7 @@ class ResourceServerTest extends TestCase
             $scopeStorage
         );
 
-        $this->setExpectedException('League\OAuth2\Server\Exception\AccessDeniedException');
+        $this->expectException('League\OAuth2\Server\Exception\AccessDeniedException');
         $server->isValidRequest(false, 'foobar');
     }
 
