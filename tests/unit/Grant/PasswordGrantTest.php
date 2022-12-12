@@ -15,6 +15,8 @@ class PasswordGrantTest extends TestCase
 {
     public function testCompleteFlowMissingClientId()
     {
+        unset($_POST);
+
         $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST['grant_type'] = 'password';

@@ -68,6 +68,9 @@ class AuthorizationServerTest extends TestCase
     {
         $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
         $server = new AuthorizationServer();
+
+        $_POST['grant_type'] = null;
+
         $this->assertTrue($server->issueAccessToken());
     }
 
