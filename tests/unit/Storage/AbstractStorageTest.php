@@ -4,8 +4,9 @@ namespace LeagueTests\Storage;
 
 use LeagueTests\Stubs\StubAbstractServer;
 use LeagueTests\Stubs\StubAbstractStorage;
+use PHPUnit\Framework\TestCase;
 
-class AbstractStorageTest extends \PHPUnit_Framework_TestCase
+class AbstractStorageTest extends TestCase
 {
     public function testSetGet()
     {

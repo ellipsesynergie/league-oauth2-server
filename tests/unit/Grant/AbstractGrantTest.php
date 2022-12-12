@@ -9,8 +9,9 @@ use League\OAuth2\Server\Exception\InvalidRequestException;
 use League\OAuth2\Server\Grant;
 use LeagueTests\Stubs\StubAbstractGrant;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class AbstractGrantTest extends \PHPUnit_Framework_TestCase
+class AbstractGrantTest extends TestCase
 {
     public function testSetGet()
     {

@@ -9,8 +9,9 @@ use League\OAuth2\Server\Entity\SessionEntity;
 use League\OAuth2\Server\Grant\PasswordGrant;
 use League\OAuth2\Server\Grant\RefreshTokenGrant;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class PasswordGrantTest extends \PHPUnit_Framework_TestCase
+class PasswordGrantTest extends TestCase
 {
     public function testCompleteFlowMissingClientId()
     {

@@ -6,9 +6,10 @@ use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Entity\AccessTokenEntity;
 use League\OAuth2\Server\TokenType\MAC;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
-class MacTest extends \PHPUnit_Framework_TestCase
+class MacTest extends TestCase
 {
     public function testGenerateResponse()
     {

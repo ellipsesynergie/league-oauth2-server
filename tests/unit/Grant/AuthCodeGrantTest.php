@@ -11,8 +11,9 @@ use League\OAuth2\Server\Exception\InvalidRequestException;
 use League\OAuth2\Server\Grant\AuthCodeGrant;
 use League\OAuth2\Server\Grant\RefreshTokenGrant;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
+class AuthCodeGrantTest extends TestCase
 {
     public function testSetAuthTokenTTL()
     {

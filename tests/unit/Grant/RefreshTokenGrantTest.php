@@ -10,8 +10,9 @@ use League\OAuth2\Server\Entity\ScopeEntity;
 use League\OAuth2\Server\Entity\SessionEntity;
 use League\OAuth2\Server\Grant\RefreshTokenGrant;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
+class RefreshTokenGrantTest extends TestCase
 {
     public function testSetRefreshTokenTTL()
     {

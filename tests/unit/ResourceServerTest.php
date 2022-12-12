@@ -8,8 +8,9 @@ use League\OAuth2\Server\Entity\ScopeEntity;
 use League\OAuth2\Server\Entity\SessionEntity;
 use League\OAuth2\Server\ResourceServer;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class ResourceServerTest extends \PHPUnit_Framework_TestCase
+class ResourceServerTest extends TestCase
 {
     private function returnDefault()
     {

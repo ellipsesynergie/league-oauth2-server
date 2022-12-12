@@ -3,8 +3,9 @@
 namespace LeagueTests;
 
 use LeagueTests\Stubs\StubAbstractServer;
+use PHPUnit\Framework\TestCase;
 
-class AbstractServerTest extends \PHPUnit_Framework_TestCase
+class AbstractServerTest extends TestCase
 {
     public function testSetGet()
     {

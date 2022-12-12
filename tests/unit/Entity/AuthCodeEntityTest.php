@@ -7,8 +7,9 @@ use League\OAuth2\Server\Entity\AuthCodeEntity;
 use League\OAuth2\Server\Entity\ScopeEntity;
 use League\OAuth2\Server\Entity\SessionEntity;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class AuthCodeEntityTest extends \PHPUnit_Framework_TestCase
+class AuthCodeEntityTest extends TestCase
 {
     public function testSetGet()
     {

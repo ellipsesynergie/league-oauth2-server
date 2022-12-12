@@ -3,8 +3,9 @@
 namespace LeagueTests;
 
 use League\OAuth2\Server\Exception\OAuthException;
+use PHPUnit\Framework\TestCase;
 
-class OAuthExceptionTest extends \PHPUnit_Framework_TestCase
+class OAuthExceptionTest extends TestCase
 {
     public function testGetHttpHeaders()
     {

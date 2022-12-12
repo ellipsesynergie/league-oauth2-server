@@ -6,8 +6,9 @@ use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Grant\GrantTypeInterface;
 use League\OAuth2\Server\Storage\ScopeInterface;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class AuthorizationServerTest extends \PHPUnit_Framework_TestCase
+class AuthorizationServerTest extends TestCase
 {
     public function testSetGet()
     {

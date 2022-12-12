@@ -7,8 +7,9 @@ use League\OAuth2\Server\Entity\ScopeEntity;
 use League\OAuth2\Server\Entity\SessionEntity;
 use LeagueTests\Stubs\StubAbstractTokenEntity;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class AbstractTokenEntityTest extends \PHPUnit_Framework_TestCase
+class AbstractTokenEntityTest extends TestCase
 {
     public function testSetGet()
     {
