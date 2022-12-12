@@ -169,11 +169,9 @@ class ResourceServerTest extends TestCase
         $this->assertEquals('abcdef', $server->getAccessToken());
     }
 
-    /**
-     * @expectedException League\OAuth2\Server\Exception\AccessDeniedException
-     */
     public function testIsValidExpiredToken()
     {
+        $this->expectException(\League\OAuth2\Server\Exception\AccessDeniedException::class);
         $sessionStorage = M::mock('League\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
 
