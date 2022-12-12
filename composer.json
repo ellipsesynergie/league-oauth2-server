@@ -55,5 +55,8 @@
 		"psr-4": {
 			"LeagueTests\\": "tests/unit/"
 		}
+	},
+	"scripts": {
+		"test:unit": "phpunit --colors=always"
 	}
 }

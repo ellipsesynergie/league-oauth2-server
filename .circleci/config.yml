@@ -1,0 +1,31 @@
+docker-auth: &docker-auth
+  auth:
+    username: devopsoptania
+    password: $DOCKERHUB_PASSWORD
+
+defaults: &defaults
+  working_directory: ~/league-oauth2-server
+  docker:
+    - image: cimg/php:7.4
+      <<: *docker-auth
+
+version: 2.1
+jobs:
+  build:
+    <<: *defaults
+    environment:
+      COMPOSER_PROCESS_TIMEOUT: 600
+    steps:
+      - checkout
+      - run: sudo composer self-update
+      - restore_cache:
+          keys:
+            - composer-v1-{{ checksum "composer.json" }}
+            - composer-v1-
+      - run: composer config -g github-oauth.github.com $GITHUB_TOKEN
+      - run: composer install -n --prefer-dist --optimize-autoloader
+      - save_cache:
+          key: composer-v1-{{ checksum "composer.json" }}
+          paths:
+            - vendor
+      - run: composer test:unit
