@@ -8,12 +8,15 @@ use League\OAuth2\Server\Entity\ScopeEntity;
 use League\OAuth2\Server\Entity\SessionEntity;
 use League\OAuth2\Server\Grant\ClientCredentialsGrant;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class ClientCredentialsGrantTest extends \PHPUnit_Framework_TestCase
+class ClientCredentialsGrantTest extends TestCase
 {
     public function testCompleteFlowMissingClientId()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        unset($_POST);
+
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST['grant_type'] = 'client_credentials';
 
@@ -26,7 +29,7 @@ class ClientCredentialsGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowMissingClientSecret()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type' => 'client_credentials',
@@ -42,7 +45,7 @@ class ClientCredentialsGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowInvalidClient()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidClientException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidClientException');
 
         $_POST = [
             'grant_type' => 'client_credentials',
@@ -65,7 +68,7 @@ class ClientCredentialsGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowInvalidScope()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidScopeException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidScopeException');
 
         $_POST = [
             'grant_type' => 'client_credentials',
@@ -207,7 +210,7 @@ class ClientCredentialsGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testClientNotAuthorizedToUseGrant()
     {
-        $this->setExpectedException('\League\OAuth2\Server\Exception\UnauthorizedClientException');
+        $this->expectException('\League\OAuth2\Server\Exception\UnauthorizedClientException');
 
         $_POST = [
             'grant_type' => 'client_credentials',

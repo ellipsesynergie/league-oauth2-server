@@ -3,8 +3,9 @@
 namespace LeagueTests\util;
 
 use League\OAuth2\Server\Util\SecureKey;
+use PHPUnit\Framework\TestCase;
 
-class SecureKeyTest extends \PHPUnit_Framework_TestCase
+class SecureKeyTest extends TestCase
 {
     public function testGenerate()
     {
@@ -19,7 +20,7 @@ class SecureKeyTest extends \PHPUnit_Framework_TestCase
 
     public function testGenerateWithDifferentAlgorithm()
     {
-        $algorithm = $this->getMock('League\OAuth2\Server\Util\KeyAlgorithm\KeyAlgorithmInterface');
+        $algorithm = $this->createMock('League\OAuth2\Server\Util\KeyAlgorithm\KeyAlgorithmInterface');
 
         $result = 'dasdsdsaads';
         $algorithm

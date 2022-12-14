@@ -6,8 +6,9 @@ use League\OAuth2\Server\Entity\AccessTokenEntity;
 use League\OAuth2\Server\Entity\ScopeEntity;
 use League\OAuth2\Server\Entity\SessionEntity;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class AccessTokenEntityTest extends \PHPUnit_Framework_TestCase
+class AccessTokenEntityTest extends TestCase
 {
     public function testSave()
     {

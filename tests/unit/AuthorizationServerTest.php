@@ -6,8 +6,9 @@ use League\OAuth2\Server\AuthorizationServer;
 use League\OAuth2\Server\Grant\GrantTypeInterface;
 use League\OAuth2\Server\Storage\ScopeInterface;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class AuthorizationServerTest extends \PHPUnit_Framework_TestCase
+class AuthorizationServerTest extends TestCase
 {
     public function testSetGet()
     {
@@ -42,7 +43,7 @@ class AuthorizationServerTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidGrantType()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidGrantException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidGrantException');
         $server = new AuthorizationServer();
         $server->getGrantType('foobar');
     }
@@ -65,14 +66,17 @@ class AuthorizationServerTest extends \PHPUnit_Framework_TestCase
 
     public function testIssueAccessTokenEmptyGrantType()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
         $server = new AuthorizationServer();
+
+        $_POST['grant_type'] = null;
+
         $this->assertTrue($server->issueAccessToken());
     }
 
     public function testIssueAccessTokenInvalidGrantType()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\UnsupportedGrantTypeException');
+        $this->expectException('League\OAuth2\Server\Exception\UnsupportedGrantTypeException');
 
         $_POST['grant_type'] = 'foobar';
 

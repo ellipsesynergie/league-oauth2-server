@@ -11,8 +11,9 @@ use League\OAuth2\Server\Exception\InvalidRequestException;
 use League\OAuth2\Server\Grant\AuthCodeGrant;
 use League\OAuth2\Server\Grant\RefreshTokenGrant;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
+class AuthCodeGrantTest extends TestCase
 {
     public function testSetAuthTokenTTL()
     {
@@ -27,7 +28,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckAuthoriseParamsMissingClientId()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_GET = [];
         $server = new AuthorizationServer();
@@ -40,7 +41,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckAuthoriseParamsMissingRedirectUri()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $server = new AuthorizationServer();
         $_GET = [
@@ -55,7 +56,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckAuthoriseParamsInvalidClient()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidClientException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidClientException');
 
         $_GET = [
             'client_id'     =>  'testapp',
@@ -78,7 +79,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckAuthoriseParamsMissingStateParam()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_GET = [
             'client_id' =>  'testapp',
@@ -102,7 +103,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckAuthoriseParamsMissingResponseType()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_GET = [
             'client_id'     =>  'testapp',
@@ -125,7 +126,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckAuthoriseParamsInvalidResponseType()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\UnsupportedResponseTypeException');
+        $this->expectException('League\OAuth2\Server\Exception\UnsupportedResponseTypeException');
 
         $_GET = [
             'client_id'     =>  'testapp',
@@ -149,7 +150,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckAuthoriseParamsInvalidScope()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidScopeException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidScopeException');
 
         $_GET = [
             'response_type' =>  'code',
@@ -279,7 +280,9 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowMissingClientId()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        unset($_POST);
+
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST['grant_type'] = 'authorization_code';
 
@@ -292,7 +295,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowMissingClientSecret()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type' => 'authorization_code',
@@ -308,7 +311,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowMissingRedirectUri()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type' => 'authorization_code',
@@ -325,7 +328,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowInvalidClient()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidClientException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidClientException');
 
         $_POST = [
             'grant_type'    =>  'authorization_code',
@@ -349,7 +352,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowMissingCode()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type'    =>  'authorization_code',
@@ -397,7 +400,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowInvalidCode()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type'    =>  'authorization_code',
@@ -446,7 +449,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowExpiredCode()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type'    =>  'authorization_code',
@@ -497,7 +500,7 @@ class AuthCodeGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowRedirectUriMismatch()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type'    =>  'authorization_code',

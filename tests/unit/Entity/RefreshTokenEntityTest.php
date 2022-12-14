@@ -7,8 +7,9 @@ use League\OAuth2\Server\Entity\RefreshTokenEntity;
 use League\OAuth2\Server\Entity\ScopeEntity;
 use League\OAuth2\Server\Entity\SessionEntity;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class RefreshTokenEntityTest extends \PHPUnit_Framework_TestCase
+class RefreshTokenEntityTest extends TestCase
 {
     public function testSetAccessTokenId()
     {

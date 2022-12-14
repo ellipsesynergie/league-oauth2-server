@@ -8,8 +8,9 @@ use League\OAuth2\Server\Entity\ScopeEntity;
 use League\OAuth2\Server\Entity\SessionEntity;
 use League\OAuth2\Server\ResourceServer;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 
-class ResourceServerTest extends \PHPUnit_Framework_TestCase
+class ResourceServerTest extends TestCase
 {
     private function returnDefault()
     {
@@ -53,7 +54,7 @@ class ResourceServerTest extends \PHPUnit_Framework_TestCase
 
     public function testDetermineAccessTokenMissingToken()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->expectException('League\OAuth2\Server\Exception\InvalidRequestException');
 
         $sessionStorage = M::mock('League\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
@@ -110,7 +111,7 @@ class ResourceServerTest extends \PHPUnit_Framework_TestCase
             $scopeStorage
         );
 
-        $this->setExpectedException('League\OAuth2\Server\Exception\AccessDeniedException');
+        $this->expectException('League\OAuth2\Server\Exception\AccessDeniedException');
         $server->isValidRequest(false, 'foobar');
     }
 
@@ -168,11 +169,9 @@ class ResourceServerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('abcdef', $server->getAccessToken());
     }
 
-    /**
-     * @expectedException League\OAuth2\Server\Exception\AccessDeniedException
-     */
     public function testIsValidExpiredToken()
     {
+        $this->expectException(\League\OAuth2\Server\Exception\AccessDeniedException::class);
         $sessionStorage = M::mock('League\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
 

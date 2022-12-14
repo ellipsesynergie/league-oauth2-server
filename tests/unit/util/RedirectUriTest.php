@@ -3,8 +3,9 @@
 namespace LeagueTests\util;
 
 use League\OAuth2\Server\Util\RedirectUri;
+use PHPUnit\Framework\TestCase;
 
-class RedirectUriTest extends \PHPUnit_Framework_TestCase
+class RedirectUriTest extends TestCase
 {
     public function testMake()
     {
