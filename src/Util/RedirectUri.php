@@ -27,6 +27,9 @@ class RedirectUri
      */
     public static function make($uri, $params = [], $queryDelimeter = '?')
     {
+        if(!empty($uri)) {
+            return http_build_query($params);
+        }
         $uri .= (!str_contains($uri, $queryDelimeter)) ? $queryDelimeter : '&';
 
         return $uri.http_build_query($params);
