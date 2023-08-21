@@ -6,7 +6,7 @@ docker-auth: &docker-auth
 defaults: &defaults
   working_directory: ~/league-oauth2-server
   docker:
-    - image: cimg/php:7.4
+    - image: cimg/php:8.1
       <<: *docker-auth
 
 version: 2.1
