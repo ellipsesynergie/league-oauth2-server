@@ -4,13 +4,13 @@
 	"homepage": "http://oauth2.thephpleague.com/",
 	"license": "MIT",
 	"require": {
-		"php": ">=8.0.2",
-		"symfony/http-foundation": "^6.0",
+		"php": "^8.2",
+		"symfony/http-foundation": "^7.0",
 		"league/event": "~2.1"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^9.0",
-		"mockery/mockery": "^1.0"
+		"phpunit/phpunit": "^10.5",
+		"mockery/mockery": "^1.6.10"
 	},
 	"repositories": [
 		{

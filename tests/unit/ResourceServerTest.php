@@ -77,7 +77,7 @@ class ResourceServerTest extends TestCase
         );
 
         $request = new \Symfony\Component\HttpFoundation\Request();
-        $request->headers = new \Symfony\Component\HttpFoundation\ParameterBag([
+        $request->headers = new \Symfony\Component\HttpFoundation\HeaderBag([
             'HTTP_AUTHORIZATION' =>  'Bearer',
         ]);
         $server->setRequest($request);
@@ -160,7 +160,7 @@ class ResourceServerTest extends TestCase
         );
 
         $request = new \Symfony\Component\HttpFoundation\Request();
-        $request->headers = new \Symfony\Component\HttpFoundation\ParameterBag([
+        $request->headers = new \Symfony\Component\HttpFoundation\HeaderBag([
             'Authorization' =>  'Bearer abcdef',
         ]);
         $server->setRequest($request);
@@ -215,7 +215,7 @@ class ResourceServerTest extends TestCase
         );
 
         $request = new \Symfony\Component\HttpFoundation\Request();
-        $request->headers = new \Symfony\Component\HttpFoundation\ParameterBag([
+        $request->headers = new \Symfony\Component\HttpFoundation\HeaderBag([
             'Authorization' =>  'Bearer abcdef',
         ]);
         $server->setRequest($request);
